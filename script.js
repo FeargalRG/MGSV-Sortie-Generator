@@ -137,8 +137,7 @@ const missions = [
     const buddy = randomItem(buddies);
     const outfit = randomItem(outfits);
 
-    return `
-      ===== SORTIE DETAILS =====
+    return `===== SORTIE DETAILS =====
       MISSION TYPE: ${missionType}
       Region: ${region}
       Location: ${location}
@@ -154,8 +153,8 @@ const missions = [
       Prosthesis: ${prosthesis}
       Support Weapon: ${supportWeapon}
       Item: ${item}
-      ============================
-    `;
+      ============================`
+      ;
 }
 
   // Add Event Listener for the Button
