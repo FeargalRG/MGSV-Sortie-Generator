@@ -1,0 +1,129 @@
+/* Link the Gotham Medium font using @font-face */
+@font-face {
+    font-family: 'Gotham Medium';
+    src: url('fonts/Gotham Medium.otf') format('opentype'); /* Update with your font file path */
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* General Body Styles */
+body {
+    background-color: #1d1f21; /* Dark background to match MGSV */
+    color: #f1f1f1; /* Light text for readability */
+    font-family: 'Courier New', Courier, monospace; /* Typewriter-style font for a tactical feel */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    transition: background-image 1s ease-in-out; /* Smooth transition when background changes */
+}
+
+/* Default Background */
+body {
+    background-image: url('default-location.jpg'); /* Default background */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* Main Container */
+.container {
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+    border: 2px solid #2c2f36; /* Dark border to make it stand out */
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.3); /* Subtle green glow around the box */
+    width: 80%;
+    max-width: 600px;
+    backdrop-filter: blur(10px); /* Blurring the background for a more immersive tech look */
+}
+
+/* Header Styling to match MGSV logo */
+h1 {
+    font-size: 3rem; /* Increased font size for bold impact */
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 5px; /* Increase letter-spacing to match the logo style */
+    position: relative;
+    font-family: 'Gotham Medium', sans-serif; /* Apply Gotham Medium font */
+    color: transparent; /* Make the text transparent to show gradients */
+}
+
+/* Metal Gear Solid V Text Style */
+.mgsv {
+    position: absolute;
+    right: 0; /* Align to the right side */
+    top: -10px;
+    font-size: 2.5rem; /* Smaller size than Sortie Generator */
+    color: #ff0000; /* Red color for "Metal Gear Solid V" */
+    text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8); /* Add shadow to give depth */
+    z-index: 2; /* Make sure MGSV text appears on top */
+}
+
+/* Sortie Generator Text Style */
+.sortie-generator {
+    font-size: 3rem; /* Larger than MGSV text */
+    color: #ffffff; /* White color for "Sortie Generator" */
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6); /* Subtle text shadow for depth */
+    position: relative;
+    z-index: 1; /* Sortie Generator text should appear below MGSV */
+}
+
+/* Button Styling */
+button {
+    background-color: #333; /* Dark gray background */
+    color: #44d100; /* Green text to match the MGSV theme */
+    font-size: 1.2rem;
+    padding: 15px 30px;
+    border: 2px solid #44d100;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+  
+button:hover {
+    background-color: #44d100; /* Green background on hover */
+    color: #1d1f21; /* Dark text when hovered */
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.7); /* Glow effect on hover */
+}
+
+/* Sortie Output Section */
+#sortie-output {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: #f1f1f1;
+    padding: 20px;
+    border: 1px solid #2c2f36;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.7);
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+/* Key Details Styling (location, objective, loadout) */
+.sortie-detail {
+    margin: 10px 0;
+    padding: 8px;
+    font-size: 1.1rem;
+    background-color: #444;
+    border-radius: 5px;
+    border: 1px solid #333;
+    color: #a9d28d; /* Light green for the details */
+}
+
+.sortie-detail span {
+    font-weight: bold;
+    color: #44d100; /* Highlight specific values */
+}
+
+/* Additional Hover Effects for Details */
+.sortie-detail:hover {
+    background-color: #555;
+    cursor: pointer;
+}
