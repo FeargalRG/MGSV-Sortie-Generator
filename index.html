@@ -7,14 +7,59 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
+  <div class="header-container">
     <h1>
       <span class="mgsv">METAL GEAR SOLID V</span>
       <span class="sortie-generator">Sortie Generator</span>
     </h1>
     <button id="generate-btn">Generate Sortie</button>
-    <div id="sortie-output"></div>
   </div>
+
+  <!-- Mission Details Container -->
+  <div id="mission-details" class="mission-details">
+    <p id="mission-type"></p>
+    <p id="mission-region"></p>
+    <p id="mission-location"></p>
+    <p id="mission-challenge"></p>
+  </div>
+
+  <!-- Sortie Details Table (Moved outside of header-container) -->
+  <div class="container">
+    <div class="sortie-table">
+      <!-- CHARACTER -->
+      <div class="cell row-a full-width">CHARACTER</div>
+      <div class="cell row-b full-width" id="character-name">Snake</div>
+      
+      <!-- BUDDY & OUTFIT -->
+      <div class="cell row-a">BUDDY</div>
+      <div class="cell row-a">OUTFIT</div>
+      <div class="cell row-b" id="buddy-name">NONE</div>
+      <div class="cell row-b" id="outfit-name">NONE</div>
+      
+      <!-- LOADOUT -->
+      <div class="cell row-a loadout-header full-width">LOADOUT</div>
+      
+      <!-- PRIMARY WEAPONS -->
+      <div class="cell row-a full-width">PRIMARY WEAPONS</div>
+      <div class="cell row-b" id="primary-weapon-hip">NONE</div>
+      <div class="cell row-b" id="primary-weapon-back">NONE</div>
+      
+      <!-- SECONDARY WEAPONS -->
+      <div class="cell row-a full-width">SECONDARY WEAPONS</div>
+      <div class="cell row-b" id="secondary-weapon">NONE</div>
+      <div class="cell row-b" id="prosthesis">NONE</div>
+      
+      <!-- SUPPORT WEAPON -->
+      <div class="cell row-a full-width">SUPPORT WEAPON</div>
+      <div class="cell row-b full-width" id="support-weapon">NONE</div>
+      
+      <!-- ITEM -->
+      <div class="cell row-a full-width">ITEM</div>
+      <div class="cell row-b full-width" id="item">NONE</div>
+      
+    </div>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>

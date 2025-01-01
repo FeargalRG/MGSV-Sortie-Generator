@@ -105,63 +105,85 @@ const missions = [
   const buddies = ["D-Horse", "D-Dog", "Quiet", "D-Walker"];
   const outfits = ["STANDAR COMBAT FATIGUES", "BATTLE DRESS", "PARASITE SUIT", "SNEAKING SUIT", "SV-SNEAKING SUIT", "SNEAKING SUIT (NS)"];
 
-  const items = ["C.BOX", "NVG", "STEALTH CAMO.PP", "PHANTOM CIGAR", "PENTAZEMIN", "NOCTOCYANIN", "ACCELERAMIN", "PARASITE(MIST)", ]
-  
-  // Generate Random Item
-  function randomItem(array) {
-    return array[Math.floor(Math.random() * array.length)];
-  }
-  
-  // Generate Mission Sortie
-  function generateMission() {
-    const missionType = randomItem(missions);
-    const region = randomItem(regions);
-    const location = randomItem(locations[region]);
-    const challenge = randomItem(challenges);
+  const items = ["C.BOX", "NVG", "STEALTH CAMO.PP", "PHANTOM CIGAR", "PENTAZEMIN", "NOCTOCYANIN", "ACCELERAMIN", "PARASITE(MIST)", ];
 
-    // Fix category selection
-    const hipCategory = randomItem(primaryWeaponHipCategories);
-    const primaryWeaponHip = randomItem(primaryWeaponsHip[hipCategory]);
-
-    const backCategory = randomItem(primaryWeaponBackCategories);
-    const primaryWeaponBack = randomItem(primaryWeaponsBack[backCategory]);
-
-    const secondaryCategory = randomItem(secondaryWeaponCategories);
-    const secondaryWeapon = randomItem(secondaryWeapons[secondaryCategory]);
-
-    const supportCategory = randomItem(supportWeaponCategories);
-    const supportWeapon = randomItem(supportWeapons[supportCategory]);
-
-    const prosthesis = randomItem(prostheses);
-    const item = randomItem(items);
-    const buddy = randomItem(buddies);
-    const outfit = randomItem(outfits);
-
-    return `===== SORTIE DETAILS =====
-      MISSION TYPE: ${missionType}
-      Region: ${region}
-      Location: ${location}
-      Objective: Complete the ${missionType.toLowerCase()} objective.
-      Bonus Challenge: ${challenge}
-      
-      Outfit: ${outfit}
-      Buddy: ${buddy}
-      === LOADOUT ===
-      Primary Weapon (Hip): ${primaryWeaponHip}
-      Primary Weapon (Back): ${primaryWeaponBack}
-      Secondary Weapon: ${secondaryWeapon}
-      Prosthesis: ${prosthesis}
-      Support Weapon: ${supportWeapon}
-      Item: ${item}
-      ============================`
-      ;
+// Random item selection helper function
+function randomItem(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
 }
 
-  // Add Event Listener for the Button
+// Generate Mission Sortie
+function generateMission() {
+  const missionType = randomItem(missions);
+  const region = randomItem(regions);
+  const location = randomItem(locations[region]);
+  const challenge = randomItem(challenges);
+
+  const hipCategory = randomItem(primaryWeaponHipCategories);
+  const primaryWeaponHip = randomItem(primaryWeaponsHip[hipCategory]);
+
+  const backCategory = randomItem(primaryWeaponBackCategories);
+  const primaryWeaponBack = randomItem(primaryWeaponsBack[backCategory]);
+
+  const secondaryCategory = randomItem(secondaryWeaponCategories);
+  const secondaryWeapon = randomItem(secondaryWeapons[secondaryCategory]);
+
+  const supportCategory = randomItem(supportWeaponCategories);
+  const supportWeapon = randomItem(supportWeapons[supportCategory]);
+
+  const prosthesis = randomItem(prostheses);
+  const item = randomItem(items);
+  const buddy = randomItem(buddies);
+  const outfit = randomItem(outfits);
+
+  return {
+      missionType,
+      region,
+      location,
+      challenge,
+      buddy,
+      outfit,
+      primaryWeaponHip,
+      primaryWeaponBack,
+      secondaryWeapon,
+      prosthesis,
+      supportWeapon,
+      item
+  };
+}
+
+// Add Event Listener for the Button
 document.getElementById("generate-btn").addEventListener("click", function () {
-    const sortie = generateMission();
-    document.getElementById("sortie-output").innerText = sortie;
-  });  
-  
-  // Display the Generated Mission
-  console.log(generateMission());
+  const sortie = generateMission();
+
+  // Correctly update the table with the random values
+  document.getElementById("character-name").innerText = "Snake"; // Character Name
+  document.getElementById("buddy-name").innerText = sortie.buddy; // Buddy Name
+  document.getElementById("outfit-name").innerText = sortie.outfit; // Outfit Name
+  document.getElementById("primary-weapon-hip").innerText = sortie.primaryWeaponHip; // Hip Weapon Name
+  document.getElementById("primary-weapon-back").innerText = sortie.primaryWeaponBack; // Back Weapon Name
+  document.getElementById("secondary-weapon").innerText = sortie.secondaryWeapon; // Secondary Weapon Name
+  document.getElementById("prosthesis").innerText = sortie.prosthesis; // Prosthesis Name
+  document.getElementById("support-weapon").innerText = sortie.supportWeapon; // Support Weapon Name
+  document.getElementById("item").innerText = sortie.item; // Item Name
+
+  // Update the mission details below the button
+  document.getElementById("mission-type").innerText = "" + sortie.missionType;
+  document.getElementById("mission-location").innerText = "" + sortie.location;
+  document.getElementById("mission-challenge").innerText = "" + sortie.challenge;
+  document.getElementById("mission-region").innerText = "   - " + sortie.region;
+
+  changeBackground(sortie.region);
+
+// Function to change the background based on the region
+function changeBackground(region) {
+  let body = document.body;
+
+  if (region === 'Northern Kabul, Afghanistan') {
+      body.style.backgroundImage = "url('images/NK.jpg')"; // Afghan background
+  } else if (region === 'Angola-Zaire border region, Central Africa') {
+      body.style.backgroundImage = "url('images/AZ.jpg')"; // Africa background
+  }
+}
+
+});
